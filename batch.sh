@@ -3,5 +3,6 @@
 # XARGS="parallel"
 [ -z "$XARGS" ] && XARGS="xargs"
 MSG="hello"
-cowsay -l | sed '1d;s/ /\n/g' | $XARGS -I{} cowsay -f {} $MSG
-echo -n 'b d g p s t w y' | $XARGS -d ' ' -I{} cowsay -{} $MSG
+cowsay -l | sed '1d;s/ /\
+/g' | $XARGS -I{} cowsay -f {} $MSG
+echo -e 'b\nd\ng\np\ns\nt\nw\ny' | $XARGS -I{} cowsay -{} $MSG
