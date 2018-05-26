@@ -4,7 +4,9 @@ BAT="./batch.sh"
 RDS="3"
 
 lscpu
-AWKSCT='BEGIN{prvs=-1}{if(4<NR&&prvs!=$2){++cnt;prvs=$2}}END{print cnt}'
+AWKSCT='BEGIN { cnt=0 } \
+    { if (4 < NR && ! ($3$2 in lst)) { lst[$3$2]=0; ++cnt }} \
+    END { print cnt }'
 CPUCNT=`lscpu -p | awk -F , "$AWKSCT"`
 CRECNT=`nproc`
 
